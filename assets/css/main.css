@@ -1,0 +1,298 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* FONT SIZE */
+/*
+p {
+    @include font-size(14px)
+}
+*/
+/*
+p {
+    @include rem('padding', 14px);
+}
+*/
+/* BREAKPOINTS */
+/*
+.sidebar {
+    width: 60%;
+    float: left;
+    margin: 0 2% 0 0;
+    @include bp-small {
+        width: 100%;
+        float: none;
+        margin: 0;
+}
+}
+*/
+/* SVG BACKGROUND IMAGES WITH PNG AND FALLBACK */
+/*
+body {
+    @include background-image('pattern');
+}
+*/
+/* ANIMATIONS AND KEYFRAMES */
+/*
+@include keyframes(slide-down) {
+    0% { opacity: 1; }
+    90% { opacity: 0; }
+}
+
+.element {
+    width: 100px;
+    height: 100px;
+    background: black;
+    @include animation('slide-down 5s 3');
+}
+*/
+/* TRANSITIONS */
+/*
+a {
+    color: gray;
+    @include transition(color .3s ease);
+    &:hover {
+        color: black;
+}
+}
+*/
+/* CROSS BROWSER OPACITY */
+/*
+.faded-text {
+    @include opacity(0.8);
+}
+*/
+/* CLEARFIX >IE6 */
+/*
+.container-with-floated-children {
+    @extend %clearfix;
+}
+*/
+html, body {
+  font-family: "Avenir-Light", sans-serif;
+}
+
+.container {
+  padding: 25px 25px 0 25px;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: 449px;
+  height: 85px;
+  background-image: url(../images/jsonme-logo.svg);
+  background-size: 449px 85px;
+}
+.logo.no-svg {
+  background-image: url(../images/jsonme-logo.png);
+}
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  .logo.no-svg {
+    background-image: url(../images/jsonme-logo@2x.png);
+  }
+}
+
+h1, h2 {
+  font-family: "Avenir-Heavy", sans-serif;
+  margin: 25px 0 15px;
+  color: #355c7d;
+}
+
+h1 {
+  font-size: 32px;
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+
+p.instructions {
+  font-family: "Avenir-Medium", sans-serif;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 18px;
+  line-height: 1.125rem;
+  color: #355c7d;
+}
+
+form {
+  /* styles du retour visuel */
+  /* on complète l'information d'un contenu textuel
+     uniquement lorsque le paragraphe n'est pas vide */
+}
+form input, form select, form textarea {
+  margin: 10px 0;
+}
+form input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  padding: 14px 0;
+  opacity: 0;
+  cursor: pointer;
+}
+form label.input-file-trigger {
+  display: block;
+  padding: 14px 45px;
+  background: #355c7d;
+  border-bottom: 1px solid #355c7d;
+  color: #fff;
+  font-size: 1em;
+  transition: all .4s;
+  cursor: pointer;
+}
+form input[type=file]:hover + label.input-file-trigger,
+form input[type=file]:focus + label.input-file-trigger,
+form label.input-file-trigger:hover,
+form label.input-file-trigger:focus {
+  background: #cc527a;
+}
+form .file-return {
+  margin: 0;
+}
+form .file-return:not(:empty) {
+  margin: 1em 0;
+}
+form .file-return {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+form .file-return:not(:empty):before {
+  content: "Selected file: ";
+  font-style: normal;
+  font-weight: normal;
+}
+form input[type=submit] {
+  display: block;
+  padding: 12px 45px;
+  background: #6c5b7b;
+  margin-left: 25px;
+  color: #fff;
+  font-family: "Avenir-Light", sans-serif;
+  font-size: 1em;
+  transition: all .4s;
+  cursor: pointer;
+  border: none;
+  border-top: 2px solid #6c5b7b;
+  border-bottom: 2px solid #6c5b7b;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+form input[type=submit]:hover,
+form input[type=submit]:focus {
+  border-top-color: #cc527a;
+  background: #cc527a;
+}
+form select {
+  display: block;
+  width: 100%;
+  padding: 14px 45px;
+  background: #355c7d;
+  color: #fff;
+  font-family: "Avenir-Light", sans-serif;
+  font-size: 1em;
+  transition: all .4s;
+  cursor: pointer;
+  border: none;
+  border-bottom: 1px solid #355c7d;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+form select:hover,
+form select:focus {
+  background: #cc527a;
+}
+
+hr {
+  margin-top: 20px;
+  border: none;
+  border-top: 1px solid #355c7d;
+}
+hr:last-of-type {
+  display: none;
+}
+
+/* replace folder icons with another image, remove leaf image */
+/* replace checkbox icons */
+a .jstree-checkbox {
+  background: url("../images/tag-20.png") 0px 0px no-repeat !important;
+  width: 32px;
+  height: 29px;
+  margin-top: 2px !important;
+}
+
+li > a.jstree-clicked .jstree-checkbox {
+  background: url("../images/lock-20.png") 0px 0px no-repeat !important;
+  width: 32px;
+  height: 29px;
+  margin-top: 0px !important;
+}
+
+/* replace default theme icons */
+a .jstree-themeicon {
+  background: url("../images/component-20.png") 0px 0px no-repeat !important;
+  width: 32px;
+  height: 29px;
+  margin-top: 2px !important;
+}
+
+/* replace node icons */
+.jstree-node:not(.jstree-leaf) > a .jstree-themeicon {
+  background: url("../images/box-20.png") 0px 0px no-repeat !important;
+  width: 32px;
+  height: 29px;
+  margin-top: -3px;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,141 @@
+html, body {
+    font-family: $font-family-light-sans-serif;
+}
+
+.container {
+    padding: 25px 25px 0 25px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 449px;
+    height: 85px;
+    @include background-image('jsonme-logo', 449px 85px);
+}
+
+h1, h2 {
+    font-family: $font-family-bold-sans-serif;
+    margin: 25px 0 15px;
+    color: $blue;
+}
+h1 {
+    @include font-size(32px);
+}
+h2 {
+    @include font-size(24px);
+}
+
+p.instructions {
+    font-family: $font-family-sans-serif;
+    @include font-size(14px);
+    @include rem('line-height', 18px);
+    color: $blue;
+}
+
+form {
+    input, select, textarea {
+        margin: 10px 0;
+    }
+
+    input[type=file] {
+        position: absolute;
+        top: 0; left: 0;
+        width: 225px;
+        padding: 14px 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    label.input-file-trigger {
+        display: block;
+        padding: 14px 45px;
+        background: $blue;
+        border-bottom: 1px solid $blue;
+        color: $white;
+        font-size: 1em;
+        transition: all .4s;
+        cursor: pointer;
+    }
+    input[type=file]:hover + label.input-file-trigger,
+    input[type=file]:focus + label.input-file-trigger,
+    label.input-file-trigger:hover,
+    label.input-file-trigger:focus {
+        background: $rose-light;
+    }
+
+    /* styles du retour visuel */
+    .file-return {
+        margin: 0;
+    }
+    .file-return:not(:empty) {
+        margin: 1em 0;
+    }
+    .file-return {
+        font-style: italic;
+        font-size: .9em;
+        font-weight: bold;
+    }
+    /* on complète l'information d'un contenu textuel
+       uniquement lorsque le paragraphe n'est pas vide */
+    .file-return:not(:empty):before {
+        content: "Selected file: ";
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    input[type=submit] {
+        display: block;
+        padding: 12px 45px;
+        background: $purple;
+        margin-left: 25px;
+        color: $white;
+        font-family: $font-family-light-sans-serif;
+        font-size: 1em;
+        transition: all .4s;
+        cursor: pointer;
+        border: none;
+        border-top: 2px solid $purple;
+        border-bottom: 2px solid $purple;
+        border-radius: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    input[type=submit]:hover,
+    input[type=submit]:focus {
+        border-top-color: $rose-light;
+        background: $rose-light;
+    }
+
+    select {
+        display: block;
+        width: 100%;
+        padding: 14px 45px;
+        background: $blue;
+        color: $white;
+        font-family: $font-family-light-sans-serif;
+        font-size: 1em;
+        transition: all .4s;
+        cursor: pointer;
+        border: none;
+        border-bottom: 1px solid $blue;
+        border-radius: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    select:hover,
+    select:focus {
+        background: $rose-light;
+    }
+}
+
+hr {
+    margin-top: 20px;
+    border: none;
+    border-top: 1px solid $blue;
+    &:last-of-type{
+        display: none;
+    }
+}

@@ -1,0 +1,37 @@
+/* replace folder icons with another image, remove leaf image */
+//li.jstree-open > a .jstree-icon {background:url("imageOpen.gif") 0px 0px no-repeat !important;}
+//li.jstree-closed > a .jstree-icon {background:url("imageClosed.gif") 0px 0px no-repeat !important;}
+//li.jstree-leaf > a .jstree-icon { display: none; }
+
+
+/* replace checkbox icons */
+a .jstree-checkbox
+{
+    background:url("../images/tag-20.png") 0px 0px no-repeat !important;
+    width: 32px;
+    height: 29px;
+    margin-top: 2px !important;
+}
+li > a.jstree-clicked .jstree-checkbox
+{
+    background:url("../images/lock-20.png") 0px 0px no-repeat !important;
+    width: 32px;
+    height: 29px;
+    margin-top: 0px !important;
+}
+
+/* replace default theme icons */
+a .jstree-themeicon
+{
+    background:url("../images/component-20.png") 0px 0px no-repeat !important;
+    width: 32px;
+    height: 29px;
+    margin-top: 2px !important;
+}
+/* replace node icons */
+.jstree-node:not(.jstree-leaf) > a .jstree-themeicon {
+    background:url("../images/box-20.png") 0px 0px no-repeat !important;
+    width: 32px;
+    height: 29px;
+    margin-top: -3px;
+}
