@@ -108,7 +108,7 @@ class Import
 
 	public function parseVerticalExcel($firstRow = 2){
 		if(!isset($this->dataXls)){
-			$this->dataXls = new stdClass();
+			$this->dataXls = [];
 		}
 		for($row = $firstRow; $row <= $this->max; $row++){
 			$this->forLevel($this->dataXls, $row, $this->structure);
