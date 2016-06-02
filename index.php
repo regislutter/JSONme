@@ -13,7 +13,7 @@
         <select name="type" id="type">
             <option value="vertical">Simple vertical Excel</option>
         </select>
-        <input type="submit" value="Envoyer le fichier" />
+        <input type="submit" value="Send the file" />
     </form>
 
     <script type="text/javascript">

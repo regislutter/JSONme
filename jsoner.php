@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>JSONme</title>
-
-    <link rel="stylesheet" href="assets/css/main.css" />
-</head>
+<?php include_once('header.php'); ?>
 <body>
+    <?php include_once('menu.php'); ?>
 
+    <div class="container">
     <?php
-
     error_reporting(E_ALL);
     ini_set('display_errors', TRUE);
     ini_set('display_startup_errors', TRUE);
@@ -43,5 +37,6 @@
     }
 
     ?>
+    </div>
 </body>
 </html>

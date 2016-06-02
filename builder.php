@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>JSONme</title>
-
-    <link rel="stylesheet" href="assets/js/jstree/themes/default/style.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-
-</head>
+<?php include_once('header.php'); ?>
 <body>
+    <?php include_once('menu.php');?>
     <div class="container">
-        <div class="logo no-svg"></div>
         <h1>Build your JSON structure</h1>
         <p class="instructions">
             - Drag and drop the components to create your JSON structure.<br/>
@@ -100,7 +91,7 @@
                 echo('<input type="hidden" name="xls_file" value="'.$upload_dir.$fileName.'" />');
                 echo('<input type="hidden" name="sheet" value="'.$i.'" />');
                 echo('<label for="line_start">First row to parse in the Sheet: </label>');
-                echo('<input type="number" id="line_start" name="line_start" value="1" /><br/>');
+                echo('<input type="number" id="line_start" name="line_start" value="2" /><br/>');
                 echo('<input type="hidden" name="line_max" value="'.($rows-1).'" />');
                 echo('<label for="geolocation">Activate the geolocation (you need to edit the code to adjust to the JSON): </label>');
                 echo('<input type="checkbox" id="geolocation" name="geolocation" value="true" /><br/>');

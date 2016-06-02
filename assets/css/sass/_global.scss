@@ -3,18 +3,21 @@ html, body {
 }
 
 .container {
-    padding: 25px 25px 0 25px;
+    padding: 25px;
 }
 
 .logo {
     display: block;
-    margin: 0 auto;
+    margin: 30px auto 10px;
     width: 449px;
     height: 85px;
     @include background-image('jsonme-logo', 449px 85px);
 }
 
-h1, h2 {
+/**
+* Texts
+*/
+h1, h2, h3, h4 {
     font-family: $font-family-bold-sans-serif;
     margin: 25px 0 15px;
     color: $blue;
@@ -24,6 +27,26 @@ h1 {
 }
 h2 {
     @include font-size(24px);
+    color: $electric-blue;
+}
+h3 {
+    margin: 15px 0 10px;
+    @include font-size(20px);
+    color: $blue-light;
+}
+strong {
+    font-weight: bold;
+}
+em {
+    font-style: italic;
+}
+
+p {
+    line-height: 1.2em;
+
+    + p {
+        margin-top: 10px;
+    }
 }
 
 p.instructions {
@@ -33,6 +56,56 @@ p.instructions {
     color: $blue;
 }
 
+pre {
+    margin: 10px 0;
+    padding: 20px;
+    font-family: $font-family-monospaced;
+    background: $grey-dark;
+    color: $sky;
+    border: 1px solid $dark;
+}
+
+span {
+    &.fake-btn {
+        display: inline-block;
+        padding: 2px 10px;
+        color: white;
+        background: $rose-light;
+        border-radius: 20px;
+        cursor: all-scroll;
+
+        &:hover {
+            background: $rose;
+        }
+    }
+
+    &.fake-label {
+        display: inline-block;
+        padding: 2px 10px;
+        color: white;
+        background: $electric-blue;
+        border-radius: 20px;
+        cursor: all-scroll;
+
+        &:hover {
+            background: $blue;
+        }
+    }
+
+    &.fake-element {
+        display: inline-block;
+        padding: 2px 10px;
+        border: 1px solid $rose;
+        font-weight: bold;
+        border-radius: 20px;
+        cursor: all-scroll;
+    }
+}
+span
+
+/**
+* Forms
+*/
 form {
     input, select, textarea {
         margin: 10px 0;
