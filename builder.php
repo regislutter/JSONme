@@ -100,15 +100,17 @@
                 echo('<input type="hidden" name="xls_file" value="'.$upload_dir.$fileName.'" />');
                 echo('<input type="hidden" name="sheet" value="'.$i.'" />');
                 echo('<label for="line_start">First row to parse in the Sheet: </label>');
-                echo('<input type="number" name="line_start" value="1" /><br/>');
+                echo('<input type="number" id="line_start" name="line_start" value="1" /><br/>');
                 echo('<input type="hidden" name="line_max" value="'.($rows-1).'" />');
+                echo('<label for="geolocation">Activate the geolocation (you need to edit the code to adjust to the JSON): </label>');
+                echo('<input type="checkbox" id="geolocation" name="geolocation" value="true" /><br/>');
                 echo('<input id="sheet_'.$i.'" type="submit" value="Convert this sheet" />');
                 echo('</form><hr/>');
 
                 // JavaScript generator
                 $scriptTree .= '$(\'#xlstree'.$i.'\').jstree({ \'core\' : { "check_callback" : true, \'data\' : [';
 
-                $row = 3;
+                $row = 1;
                 $lastColumn = $worksheet->getHighestColumn();
                 $lastColumn++;
                 $headerList = '';

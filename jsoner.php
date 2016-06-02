@@ -36,7 +36,7 @@
 
             $import->parseVerticalExcel($_POST['line_start']);
             $import->setJsonName("output.json");
-            $import->exportJson(true);
+            $import->exportJson(isset($_POST['geolocation']) && $_POST['geolocation'] == 'true');
         }catch(Exception $ex){
             echo($ex->getMessage());
         }
