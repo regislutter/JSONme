@@ -162,6 +162,14 @@ h3 {
   color: #6dbaeb;
 }
 
+a {
+  text-decoration: none;
+  color: #e8175d;
+}
+a:hover {
+  color: #cc527a;
+}
+
 strong {
   font-weight: bold;
 }
