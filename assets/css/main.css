@@ -226,19 +226,17 @@ span.fake-element {
   cursor: all-scroll;
 }
 
-span
+/**
+* Forms
+*/
 form {
   /* styles du retour visuel */
   /* on complète l'information d'un contenu textuel
      uniquement lorsque le paragraphe n'est pas vide */
 }
-span
-form input, span
-form select, span
-form textarea {
+form input, form select, form textarea {
   margin: 10px 0;
 }
-span
 form input[type=file] {
   position: absolute;
   top: 0;
@@ -248,7 +246,6 @@ form input[type=file] {
   opacity: 0;
   cursor: pointer;
 }
-span
 form label.input-file-trigger {
   display: block;
   padding: 14px 45px;
@@ -259,37 +256,28 @@ form label.input-file-trigger {
   transition: all .4s;
   cursor: pointer;
 }
-span
 form input[type=file]:hover + label.input-file-trigger,
-span
 form input[type=file]:focus + label.input-file-trigger,
-span
 form label.input-file-trigger:hover,
-span
 form label.input-file-trigger:focus {
   background: #cc527a;
 }
-span
 form .file-return {
   margin: 0;
 }
-span
 form .file-return:not(:empty) {
   margin: 1em 0;
 }
-span
 form .file-return {
   font-style: italic;
   font-size: .9em;
   font-weight: bold;
 }
-span
 form .file-return:not(:empty):before {
   content: "Selected file: ";
   font-style: normal;
   font-weight: normal;
 }
-span
 form input[type=submit] {
   display: block;
   padding: 12px 45px;
@@ -308,14 +296,11 @@ form input[type=submit] {
   -moz-appearance: none;
   appearance: none;
 }
-span
 form input[type=submit]:hover,
-span
 form input[type=submit]:focus {
   border-top-color: #cc527a;
   background: #cc527a;
 }
-span
 form select {
   display: block;
   width: 100%;
@@ -333,9 +318,7 @@ form select {
   -moz-appearance: none;
   appearance: none;
 }
-span
 form select:hover,
-span
 form select:focus {
   background: #cc527a;
 }
