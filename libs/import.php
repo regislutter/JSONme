@@ -43,7 +43,7 @@ class Import
 	public $currentLValue 	= null;
 
 	public function init() {
-		echo "Starting export...<br/>";
+//		echo "Starting export...<br/>";
 		try{
 //			$reader = new PHPExcel_Reader_Excel5();
 //			if(!$reader->canRead('./'.$this->excelName)){
@@ -156,7 +156,7 @@ class Import
 		$this->json = json_encode($this->dataXls);
 		$file = fopen($_SERVER['DOCUMENT_ROOT'].'/'.$this->jsonName, "w");
 		fwrite($file, $this->json);
-		echo("<br/>Finished export, check the file: ".$this->jsonName);
+		echo("<br/>Finished export, check the file: <strong>".$this->jsonName."</strong>");
 	}
 
 	public function forLevel(&$parent, $row, $structure){
@@ -179,8 +179,8 @@ class Import
 
 		foreach($structure as $key => $val){ // For each variable
 			if($val instanceof stdClass){ // If it's an object
-				if(!isset($el->$key) || !is_array($el->$key)){
-					$el->$key = []; // create the array to contain data
+				if(!isset($el->$key)){
+					$el->$key = isset($val->id)?[]:new stdClass(); // create array or object to contain data
 				}
 				$this->forLevel($el->$key, $row, $val); // and parse it's own variables
 			}else if(is_string($val) && strlen($val) == 1){ // If it's a variable with a column name
