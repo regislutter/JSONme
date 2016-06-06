@@ -46,52 +46,7 @@
         Example:
     </p>
     <pre>
-        Structure:
-
-        (tag icon) - country
-        - (tag icon) - city
-        - - (tag icon) - title
-        - - (tag icon) - date
-
-        Generating;
-
-        [
-            {
-                "country": {
-                    "id": "canada",
-                    "label": "canada",
-                    "city": [{
-                        "label": "montreal"
-                        "title": "Title 1",
-                        "date": "03/12/2015",
-                    }, {
-                        "label": "vancouver"
-                        "title": "Title 3",
-                        "date": "23/12/2015",
-                    }]
-                },
-                {
-                    "id": "france",
-                    "label": "france",
-                    "city": [{
-                        "label": "paris"
-                        "title": "Title 2",
-                        "date": "21/12/2015",
-                    }]
-                }
-            },
-
-        ]
-    </pre>
-    <h3>Regroupe lines by column values</h3>
-    <p>
-        If you want to regroup lines by a column value, you can click on the <span class="fake-element"><img src="assets/images/tag-16.png"/> tag icon</span> to change it to a <span class="fake-element"><img src="assets/images/lock-16.png"/> lock icon</span>.<br/>
-        It will then contains all datas (from the columns put as children) from the lines with the same value in this column.
-    </p><p>
-        For example, if we want to regroup all the cities in the same country in a sheet containing this columns: title, date, country, city.
-    </p>
-    <pre>
-        Structure:
+       Structure:
 
         (tag icon) - country
         - (tag icon) - city
@@ -131,6 +86,51 @@
                     }
                 }
             }
+        ]
+    </pre>
+    <h3>Regroupe lines by column values</h3>
+    <p>
+        If you want to regroup lines by a column value, you can click on the <span class="fake-element"><img src="assets/images/tag-16.png"/> tag icon</span> to change it to a <span class="fake-element"><img src="assets/images/lock-16.png"/> lock icon</span>.<br/>
+        It will then contains all datas (from the columns put as children) from the lines with the same value in this column.
+    </p><p>
+        For example, if we want to regroup all the cities in the same country in a sheet containing this columns: title, date, country, city.
+    </p>
+    <pre>
+         Structure:
+
+        (lock icon) - country
+        - (tag icon) - city
+        - - (tag icon) - title
+        - - (tag icon) - date
+
+        Generating;
+
+        [
+            {
+                "country": {
+                    "id": "canada",
+                    "label": "canada",
+                    "city": [{
+                        "label": "montreal"
+                        "title": "Title 1",
+                        "date": "03/12/2015",
+                    }, {
+                        "label": "vancouver"
+                        "title": "Title 3",
+                        "date": "23/12/2015",
+                    }]
+                },
+                {
+                    "id": "france",
+                    "label": "france",
+                    "city": [{
+                        "label": "paris"
+                        "title": "Title 2",
+                        "date": "21/12/2015",
+                    }]
+                }
+            },
+
         ]
     </pre>
     <h3>Editing labels</h3>

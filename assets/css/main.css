@@ -358,9 +358,11 @@ nav ul li a {
   color: white;
 }
 nav ul li a.active {
+  color: white;
   background-color: #e8175d;
 }
 nav ul li a:focus, nav ul li a:hover {
+  color: white;
   background-color: #e8175d;
 }
 

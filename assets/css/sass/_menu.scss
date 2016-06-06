@@ -16,9 +16,11 @@ nav {
                 color: white;
 
                 &.active {
+                    color: white;
                     background-color: $rose;
                 }
                 &:focus, &:hover {
+                    color: white;
                     background-color: $rose;
                 }
             }
