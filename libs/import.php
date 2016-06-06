@@ -106,15 +106,88 @@ class Import
 		}
 	}
 
+	/**
+	 * Function to parse Excel files with vertical template
+	 * @param int $firstRow First row to parse
+	 */
 	public function parseVerticalExcel($firstRow = 2){
 		if(!isset($this->dataXls)){
 			$this->dataXls = [];
 		}
 		for($row = $firstRow; $row <= $this->max; $row++){
-			$this->forLevel($this->dataXls, $row, $this->structure);
+			$this->forLevel($this->dataXls, $row, $this->structure, true);
 		}
 //		var_dump(json_encode($this->dataXls));
 	}
+
+	/**
+	 * Parse each row with the structure
+	 * @param $parent Data generated and pointer to parent element
+	 * @param $row Row of the file to parse
+	 * @param $structure Structure from this level of the tree to extract from the JSON
+	 */
+	public function forLevel(&$parent, $row, $structure, $firstLevel){
+		$el = new stdClass();
+
+		if($firstLevel){
+			foreach($structure as $key => $val) { // For each variable
+				$alreadyTop = false;
+				if($val instanceof stdClass){
+					foreach($parent as $item){
+						if(isset($item->$key)){
+							$el = $item;
+							$alreadyTop = true;
+							continue;
+						}
+					}
+
+					if(!isset($el->$key)){
+						$el->$key = isset($val->id)?[]:new stdClass(); // create array or object to contain data
+					}
+					$this->forLevel($el->$key, $row, $val, false); // and parse it's own variables
+				}else if(is_string($val) && strlen($val) == 1){ // If it's a variable with a column name
+					if($this->workSheet !== null){
+						$value = $this->workSheet->getCell($val.$row)->getCalculatedValue();
+						$el->$key = $value; // put the value in the current element
+					}
+				}
+			}
+			if(!$alreadyTop) {
+				array_push($parent, $el); // Insert element in group
+			}
+			return;
+		}
+
+		$alreadyExist = false;
+		if(is_array($parent)){
+			foreach($parent as $item){
+				// If the element with this id already exist
+				if(isset($item->id) && $item->id ==  $this->workSheet->getCell($structure->id.$row)->getCalculatedValue()){
+					$alreadyExist = true;
+					$el = $item; // Existing item with them ID
+				}
+			}
+		}
+
+		foreach($structure as $key => $val) { // For each variable
+			if($val instanceof stdClass){
+				if(!isset($el->$key)){
+					$el->$key = isset($val->id)?[]:new stdClass(); // create array or object to contain data
+				}
+				$this->forLevel($el->$key, $row, $val, false); // and parse it's own variables
+			}else if(is_string($val) && strlen($val) == 1){ // If it's a variable with a column name
+				if($this->workSheet !== null){
+					$value = $this->workSheet->getCell($val.$row)->getCalculatedValue();
+					$el->$key = $value; // put the value in the current element
+				}
+			}
+		}
+
+		if(is_array($parent) && !$alreadyExist){
+			array_push($parent, $el); // Insert element in group
+		}
+	}
+
 	public function exportJson($geocoding = false){
 		if(!empty($geocoding)){
 			$api_key = 'AIzaSyAD8b-WDnJUoSX4sBO0BjpTI_zqC2KC1qY';
@@ -157,45 +230,6 @@ class Import
 		$file = fopen($_SERVER['DOCUMENT_ROOT'].'/'.$this->jsonName, "w");
 		fwrite($file, $this->json);
 		echo("<br/>Finished export, check the file: <strong>".$this->jsonName."</strong>");
-	}
-
-	public function forLevel(&$parent, $row, $structure){
-		// For each item in the level, insert it in the parent
-		$el = new stdClass(); // Create new object
-		if(!is_array($parent)){ // If we are at the first level
-			$el = $parent; // current element is parent
-		}
-
-		$alreadyExist = false;
-		if(isset($structure->id)){ // If we have an id
-			foreach($parent as $item){
-				if(isset($item->id) && $item->id == $this->workSheet->getCell($structure->id.$row)->getCalculatedValue()){
-					// If the element with this id already exist
-					$alreadyExist = true;
-					$el = $item;
-				}
-			}
-		}
-
-		foreach($structure as $key => $val){ // For each variable
-			if($val instanceof stdClass){ // If it's an object
-				if(!isset($el->$key)){
-					$el->$key = isset($val->id)?[]:new stdClass(); // create array or object to contain data
-				}
-				$this->forLevel($el->$key, $row, $val); // and parse it's own variables
-			}else if(is_string($val) && strlen($val) == 1){ // If it's a variable with a column name
-				if($this->workSheet !== null){
-					$value = $this->workSheet->getCell($val.$row)->getCalculatedValue();
-					$el->$key = $value; // put the value in the current element
-				}
-			}
-		}
-
-		if(!$alreadyExist){
-			if(is_array($parent)){ // If we are not at first level
-				array_push($parent, $el); // insert object in level's array
-			}
-		}
 	}
 
     // déclaration des méthodes
